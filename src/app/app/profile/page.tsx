@@ -13,15 +13,13 @@ export default async function ProfilePage() {
         }
     })
 
-    // BLOCKED via lax and strict
-    // ALLOWED via SameSite=None; Secure
     const post = async () => {
         'use server'
 
         const cookieStore = await cookies()
 
         try {
-            const response = await api.post('/profile', {
+            const response = await api.post('/profile', {}, {
                 headers: {
                     'Cookie': cookieStore.toString(),
                 }
@@ -33,15 +31,13 @@ export default async function ProfilePage() {
         }
     }
 
-    // BLOCKED via lax and strict
-    // ALLOWED via SameSite=None; Secure
     const put = async () => {
         'use server'
 
         const cookieStore = await cookies()
 
         try {
-            const response = await api.put('/profile', {
+            const response = await api.put('/profile', {}, {
                 headers: {
                     'Cookie': cookieStore.toString(),
                 }
@@ -53,8 +49,6 @@ export default async function ProfilePage() {
         }
     }
 
-    // BLOCKED via lax and strict (depends on the browser)
-    // ALLOWED via SameSite=None; Secure
     const del = async () => {
         'use server'
 
@@ -73,7 +67,6 @@ export default async function ProfilePage() {
         }
     }
 
-    // ALLOWED always
     const get = async () => {
         'use server'
 
